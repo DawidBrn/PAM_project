@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Wyloguj" />
+            android:text="Wyloguj"
+            android:onClick="logout"/>
 
         <TextView
             android:id="@+id/label"
@@ -29,13 +30,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Dodaj ogłoszenie" />
+            android:text="Dodaj ogłoszenie"
+            android:onClick="create"/>
 
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="706dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:id="@+id/recycle"/>
 
 </LinearLayout>

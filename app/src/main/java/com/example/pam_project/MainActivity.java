@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "tag";
+    private static final String TAG = "tag main";
     private FirebaseAuth mAuth;
     EditText email_et;
     EditText password_et;
@@ -32,27 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
         email_et = (EditText) findViewById(R.id.email_et);
         password_et = (EditText) findViewById(R.id.password_et);
-
-        mAuth.createUserWithEmailAndPassword("email", "password")
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        }
-
-                        // ...
-                    }
-                });
 
         Button loginBtn = (Button) findViewById(R.id.login_btn);
         Button registerBtn = (Button) findViewById(R.id.register_btn);
@@ -72,6 +51,12 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
     public void loginUser()
     {
         String email = email_et.getText().toString();
@@ -85,15 +70,17 @@ public class MainActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(MainActivity.this, "Authentication succeed.",
+                            Toast.makeText(MainActivity.this, "Zalogowano.",
                                     Toast.LENGTH_SHORT).show();
+                            email_et.setText("");
+                            password_et.setText("");
                             Intent i = new Intent(getApplicationContext(),HomeActivity.class);
                             startActivity(i);
                             //updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(MainActivity.this, "Authentication failed.",
+                            Toast.makeText(MainActivity.this, "Autoryzacja nie powiodła się.",
                                     Toast.LENGTH_SHORT).show();
                             //updateUI(null);
                         }
@@ -104,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
     }
         else
         {
-            Toast.makeText(MainActivity.this, "Authentication failed.",
+            Toast.makeText(MainActivity.this, "Autoryzacja nie powiodła się",
                     Toast.LENGTH_SHORT).show();
         }
     }
