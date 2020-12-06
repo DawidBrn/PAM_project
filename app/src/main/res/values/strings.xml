@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">PAM_project</string>
+    <string name="register_title">Rejestracja</string>
+    <string name="login_title"> Logowanie</string>
+    <string name="email">E - mail :</string>
+    <string name="haslo"> Hasło :</string>
+    <string name="login_btn"> Zaloguj mnie</string>
+    <string name="register_btn">Zarejestuj mnie</string>
+    <string name="email_hint">Tutaj wpisz email</string>
+    <string name="password_hint">Tutaj wpisz hasło</string>
+</resources>

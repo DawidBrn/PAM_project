@@ -1,0 +1,2 @@
+rootProject.name='PAM_project'
+include ':app'
